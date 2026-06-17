@@ -1,5 +1,5 @@
 ﻿---
-name: aaa-skill-bundler
+name: aa-bundler-skill
 description: 自动整理已安装的 Codex 技能，生成更容易调用的 aa-* 技能包入口，运行前会询问你是否需要汉化。仅用于安装技能后打包、整理历史技能、翻译说明或维护技能列表。
 ---
 
@@ -11,7 +11,7 @@ This skill is an installation, organization, and optional localization helper. I
 
 ## Core Rules
 
-- `aaa-skill-bundler` is the organizer. It uses the `aaa-` prefix to sort at the very top of skill lists.
+- `aa-bundler-skill` is the organizer. It uses the `aaa-` prefix to sort at the very top of skill lists.
 - Generated bundle skills use the `aa-` prefix so they sort near the top of skill lists.
 - Users do not need to say "AA"; the prefix is an implementation detail.
 - Original skills keep their own trigger logic and behavior.
@@ -166,3 +166,4 @@ After creating or updating bundles, report:
 - validation counts and any remaining issues
 - health scan results: orphan refs, stale bundles, duplicate coverage, constraint violations
 - whether the user should restart Codex to pick up new skill entries
+

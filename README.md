@@ -1,12 +1,12 @@
 ﻿# AAA Skill Bundler
 
-[![skills.sh](https://skills.sh/b/tomhuaijbig/aaa-skill-bundler)](https://skills.sh/tomhuaijbig/aaa-skill-bundler)
+[![skills.sh](https://skills.sh/b/tomhuaijbig/aa-bundler-skill)](https://skills.sh/tomhuaijbig/aa-bundler-skill)
 
 将已安装的 Codex / Claude Code 技能自动分类并生成 `aa-*` 入口索引，可选中文描述。
 
 ## 背景
 
-同时安装多个技能后，技能列表迅速膨胀。用户需记忆每个技能的英文名称、功能描述与触发场景，查找效率随技能数量线性下降。`aaa-skill-bundler` 将这一维护成本压缩为单次整理操作。
+同时安装多个技能后，技能列表迅速膨胀。用户需记忆每个技能的英文名称、功能描述与触发场景，查找效率随技能数量线性下降。`aa-bundler-skill` 将这一维护成本压缩为单次整理操作。
 
 ## 原理
 
@@ -21,17 +21,17 @@
 ### skills.sh（推荐）
 
 ```bash
-npx skills@latest add tomhuaijbig/aaa-skill-bundler
+npx skills@latest add tomhuaijbig/aa-bundler-skill
 ```
 
 ### 手动
 
 ```powershell
 # Codex
-Copy-Item -Recurse .\skills\aaa-skill-bundler "$env:USERPROFILE\.codex\skills\aaa-skill-bundler"
+Copy-Item -Recurse .\skills\aa-bundler-skill "$env:USERPROFILE\.codex\skills\aa-bundler-skill"
 
 # Claude Code
-Copy-Item -Recurse .\skills\aaa-skill-bundler "$env:USERPROFILE\.agents\skills\aaa-skill-bundler"
+Copy-Item -Recurse .\skills\aa-bundler-skill "$env:USERPROFILE\.agents\skills\aa-bundler-skill"
 ```
 
 ### 使用
@@ -48,9 +48,9 @@ bundle my skills
 
 ## 包含技能
 
-### `aaa-skill-bundler` — 整理器
+### `aa-bundler-skill` — 整理器
 
-**路径**: [`skills/aaa-skill-bundler/SKILL.md`](./skills/aaa-skill-bundler/SKILL.md)
+**路径**: [`skills/aa-bundler-skill/SKILL.md`](./skills/aa-bundler-skill/SKILL.md)
 
 **功能**：
 
@@ -100,14 +100,15 @@ bundle my skills
 
 | 文件 | 内容 |
 |------|------|
-| [aaa-skill-bundler](./skills/aaa-skill-bundler/SKILL.md) | 整理器定义 |
+| [aa-bundler-skill](./skills/aa-bundler-skill/SKILL.md) | 整理器定义 |
 | [aaa-trial-hello](./skills/aaa-trial-hello/SKILL.md) | 管道测试技能 |
-| [bundle-template](./skills/aaa-skill-bundler/references/bundle-template.md) | 入口包结构模板 |
-| [chinese-copy-rules](./skills/aaa-skill-bundler/references/chinese-copy-rules.md) | 中文描述编写规范 |
-| [grouping-rules](./skills/aaa-skill-bundler/references/grouping-rules.md) | 技能分组规则 |
+| [bundle-template](./skills/aa-bundler-skill/references/bundle-template.md) | 入口包结构模板 |
+| [chinese-copy-rules](./skills/aa-bundler-skill/references/chinese-copy-rules.md) | 中文描述编写规范 |
+| [grouping-rules](./skills/aa-bundler-skill/references/grouping-rules.md) | 技能分组规则 |
 
 ---
 
 ## License
 
 MIT
+

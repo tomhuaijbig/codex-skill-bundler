@@ -59,7 +59,7 @@ Every compatible skill has:
 ### For Codex
 
 ```text
-安装 https://github.com/tomhuaijbig/aaa-skill-bundler 里的 aaa-trial-hello 技能
+安装 https://github.com/tomhuaijbig/aa-bundler-skill 里的 aaa-trial-hello 技能
 ```
 
 ### For Claude Code (Cloud Code)
@@ -85,3 +85,4 @@ This is an example skill included for demonstration and learning. Feel free to m
 - This skill does not have side effects. It only reads its own structure and reports back.
 - You can rename, copy, or extend this skill to create your own custom skills.
 - For Claude Code specific features, check Claude Code documentation at docs.anthropic.com.
+
