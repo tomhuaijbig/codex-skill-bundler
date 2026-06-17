@@ -2,31 +2,31 @@
 
 [![skills.sh](https://skills.sh/b/tomhuaijbig/aaa-skill-bundler)](https://skills.sh/tomhuaijbig/aaa-skill-bundler)
 
-Organize your installed skills into clean `aa-*` bundle entries. Works with Codex and Claude Code.
+把已安装的技能整理成清爽的 `aa-*` 入口包。兼容 Codex 和 Claude Code。
 
-## The Problem
+## 痛点
 
-Installing skills is easy. Using them is hard. After installing a bunch of skills, your list becomes a wall of English names. You forget what `metric-diagnostics` does. You can't remember if `figma-use` or `figma-generate-design` is the right one. You end up scrolling and guessing.
+装技能简单，用技能难。装了一堆之后，技能列表变成一堵英文墙。你忘了 `metric-diagnostics` 是干嘛的，分不清 `figma-use` 和 `figma-generate-design` 该用哪个。最后不是放弃，就是每次翻半天。
 
-## The Fix
+## 解法
 
-`aaa-skill-bundler` scans every installed skill, groups related ones by source and function, and generates lightweight `aa-*` bundle entries that sit at the top of your skill list. Each entry acts as a Chinese-friendly router — telling you what each child skill does, when to use it, and what trigger phrases work.
+`aaa-skill-bundler` 扫描所有已安装的技能，按来源和功能分组，生成轻量的 `aa-*` 入口技能。这些入口排在列表顶部，用中文告诉你每个子技能做什么、什么时候用、有哪些触发词。
 
-The actual work still happens through the original skills. The bundle just makes them findable.
+真正的执行仍然走原技能。入口只负责让你找得到。
 
-When you run it, it asks whether you want descriptions translated to Chinese. If yes, it localizes grey/list descriptions while **keeping original titles untouched**. If no, it generates English-only bundles. No renaming, no deleting, no surprises.
+运行时会先问你**要不要汉化**。要的话，把说明翻成中文，但标题、文件夹名、`name` 保留原样。不要的话，生成纯英文入口。不改名、不删除、不出意外。
 
-## Quickstart
+## 快速开始
 
-### skills.sh (recommended)
+### skills.sh（推荐）
 
 ```bash
 npx skills@latest add tomhuaijbig/aaa-skill-bundler
 ```
 
-Pick the skills you want, choose your coding agent (Codex or Claude Code), and you're ready.
+选你需要的技能和目标代理（Codex 或 Claude Code），就装好了。
 
-### Manual
+### 手动安装
 
 ```powershell
 # Codex
@@ -36,7 +36,7 @@ Copy-Item -Recurse .\skills\aaa-skill-bundler "$env:USERPROFILE\.codex\skills\aa
 Copy-Item -Recurse .\skills\aaa-skill-bundler "$env:USERPROFILE\.agents\skills\aaa-skill-bundler"
 ```
 
-### Trigger It
+### 触发
 
 ```text
 整理一下我的技能
@@ -48,81 +48,77 @@ bundle my skills
 
 ---
 
-## Skills
+## 技能清单
 
-### `aaa-skill-bundler` — The Organizer
+### `aaa-skill-bundler` — 整理器
 
-The main skill. Scans, groups, and generates `aa-*` bundle entries.
+主技能。扫描、分组、生成 `aa-*` 入口包。
 
-**Source**: [`skills/aaa-skill-bundler/SKILL.md`](./skills/aaa-skill-bundler/SKILL.md)
+**文件**: [`skills/aaa-skill-bundler/SKILL.md`](./skills/aaa-skill-bundler/SKILL.md)
 
-**What it does**:
+**功能**:
 
-- Scans `~/.codex/skills/`, plugin caches, and agent directories
-- Groups skills by source, install time, and function
-- Generates one `aa-*` entry per meaningful group
-- Validates YAML, JSON, paths, and references after every change
-- Preserves user-edited Chinese copy on updates
+- 扫描 `~/.codex/skills/`、插件缓存和代理目录
+- 按安装来源、时间和功能分组
+- 每组生成一个 `aa-*` 入口技能
+- 每次修改后验证 YAML、JSON、路径和引用
+- 更新已有包时保留用户自己改过的中文内容
 
-**Modes**:
+**模式**:
 
-| Mode | When | Trigger |
-|------|------|---------|
-| Post-install | Just installed new skills | `刚安装完技能` |
-| Backfill | Skills installed earlier | `整理一下我的技能` |
-| Localization | Translate only | `汉化技能说明` |
+| 模式 | 场景 | 触发词 |
+|------|------|--------|
+| 新装整理 | 刚装了新技能 | `刚安装完技能`、`打包技能` |
+| 历史整理 | 以前装过的技能 | `整理一下我的技能` |
+| 纯汉化 | 只要翻译 | `汉化技能说明`、`翻译技能` |
 
-**Safety**:
+**安全规则**:
 
-- Asks before localizing
-- Never deletes or renames original skills
-- Never copies full skill bodies into bundles
-- Never localizes titles by default
+- 汉化前先询问
+- 不删除、不重命名原技能
+- 不把原技能正文复制进入口包
+- 默认不汉化标题
 
-### `aaa-trial-hello` — Smoke Test
+### `aaa-trial-hello` — 试用测试
 
-A minimal demo skill for verifying your skill pipeline works.
+最小演示技能，用来验证技能管道是否正常。
 
-**Source**: [`skills/aaa-trial-hello/SKILL.md`](./skills/aaa-trial-hello/SKILL.md)
+**文件**: [`skills/aaa-trial-hello/SKILL.md`](./skills/aaa-trial-hello/SKILL.md)
 
-**Trigger**: `试用技能` / `trial skill` / `skill demo`
+**触发词**: `试用技能` / `trial skill` / `skill demo`
 
-**Use it to**: confirm installation works, learn skill structure, test cross-platform compatibility.
+**用途**: 确认安装成功、学习技能结构、测试跨平台兼容性。
 
-**Platform**: Codex :check_mark: | Claude Code :check_mark:
-
----
-
-## Platform Support
-
-| Platform | Skill Directory | Notes |
-|----------|----------------|-------|
-| Codex | `~/.codex/skills/` | Full trigger support, all metadata |
-| Claude Code | `~/.agents/skills/` | `SKILL.md` convention; `agents/openai.yaml` ignored |
+**平台**: Codex :check_mark: | Claude Code :check_mark:
 
 ---
 
-## Reference
+## 平台支持
 
-| File | What it is |
-|------|-----------|
-| [aaa-skill-bundler SKILL.md](./skills/aaa-skill-bundler/SKILL.md) | The organizer skill |
-| [aaa-trial-hello SKILL.md](./skills/aaa-trial-hello/SKILL.md) | Smoke-test demo |
-| [bundle-template.md](./skills/aaa-skill-bundler/references/bundle-template.md) | Template for generated bundles |
-| [chinese-copy-rules.md](./skills/aaa-skill-bundler/references/chinese-copy-rules.md) | Rules for Chinese descriptions |
-| [grouping-rules.md](./skills/aaa-skill-bundler/references/grouping-rules.md) | How skills get grouped |
+| 平台 | 技能目录 | 备注 |
+|------|----------|------|
+| Codex | `~/.codex/skills/` | 完整触发支持，所有元数据字段 |
+| Claude Code | `~/.agents/skills/` | `SKILL.md` 约定；`agents/openai.yaml` 被忽略 |
 
 ---
 
-## Why This Exists
+## 参考文件
 
-> "The rate of feedback is your speed limit."
->
-> David Thomas & Andrew Hunt, The Pragmatic Programmer
+| 文件 | 说明 |
+|------|------|
+| [aaa-skill-bundler SKILL.md](./skills/aaa-skill-bundler/SKILL.md) | 整理器技能定义 |
+| [aaa-trial-hello SKILL.md](./skills/aaa-trial-hello/SKILL.md) | 试用演示技能 |
+| [bundle-template.md](./skills/aaa-skill-bundler/references/bundle-template.md) | 生成包的结构模板 |
+| [chinese-copy-rules.md](./skills/aaa-skill-bundler/references/chinese-copy-rules.md) | 中文说明写法规则 |
+| [grouping-rules.md](./skills/aaa-skill-bundler/references/grouping-rules.md) | 技能分组规则 |
 
-Good tools are useless if you can't find them. `aaa-skill-bundler` shortens the feedback loop between "I need a skill for this" and "I found the right one." It turns a wall of English entries into a clean, scannable index — optionally in Chinese.
+---
 
-No magic. No automation that renames your stuff. Just grouping, routing, and optional localization.
+## 设计理念
+
+> 反馈速度就是你的上限。
+
+好工具找不到等于没有。`aaa-skill-bundler` 做的事很简单：把一堵英文墙变成一个清爽的、可扫读的中文索引。没有黑魔法，没有自动改名。就是分组、路由、可选中文化。
 
 ## License
 
